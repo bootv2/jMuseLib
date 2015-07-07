@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    /*private List<ConcentrationDataPoint> dataList = new ArrayList<ConcentrationDataPoint>();
+    private List<ConcentrationDataPoint> dataList = new ArrayList<ConcentrationDataPoint>();
     private ConcentrationDataPoint currentDataPoint;
     //private Chronotype chronotype = new Chronotype();
     private static final int MAX_DATAPOINTS = 360;
@@ -27,7 +27,7 @@ public class Main {
     {
         lHandler = new LineHandler();
         lHandler.runConcentrationListener();
-    }*/
+    }
 
 
 

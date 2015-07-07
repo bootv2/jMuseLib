@@ -13,6 +13,16 @@ import java.util.List;
 public class LineHandler
 {
     private String next;
+
+    public List<Line> getDataList() {
+        return dataList;
+    }
+
+    public void clearDataList()
+    {
+        dataList.clear();
+    }
+
     private List<Line> dataList = new ArrayList<Line>();
     private Line currentDataPoint;
     public void runConcentrationListener()

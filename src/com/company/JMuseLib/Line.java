@@ -3,6 +3,7 @@ package com.company.JMuseLib;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by TTT on 7/7/2015.
@@ -12,13 +13,27 @@ public class Line
     private String oscLine = "";
     private byte[] oscBytes;
     private ArrayList<String> dataPath = new ArrayList<String>();
-    //private float floats = null;
+    private Long measurementMoment;
+    Calendar cal = Calendar.getInstance();
+    private float floats = 0;
     //private int ints = null;
 
+    public float getFloat()
+    {
+        return floats;
+    }
+    public long getTime()
+    {
+        return measurementMoment;
+    }
+
     public Line(String oscLine) {
+        measurementMoment = cal.getTime().getTime();
         this.oscLine = oscLine;
         seperateLine();
     }
+
+
 
     private void seperateLine()
     {
@@ -82,7 +97,8 @@ public class Line
                 break;
         }
         //oscBytes = new byte[floatBytes]{(byte)oscLine.};
-        System.out.println(ByteBuffer.wrap(oscBytes).order(ByteOrder.LITTLE_ENDIAN).getFloat());
+        floats = ByteBuffer.wrap(oscBytes).order(ByteOrder.LITTLE_ENDIAN).getFloat();
+        System.out.println(floats);
     }
 
 
