@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.company;
+package com.company.JMuseLib;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.InputStream;
@@ -27,7 +27,7 @@ import java.io.IOException;
 
  * @author TTT BBB
  ***/
-public class Telnet implements Runnable
+public class OSCServer implements Runnable
 {
     ServerSocket serverSocket = null;
     Socket clientSocket = null;
@@ -41,7 +41,7 @@ public class Telnet implements Runnable
 
      * @param port - server port on which to listen.
      ***/
-    public Telnet(int port) throws IOException
+    public OSCServer(int port) throws IOException
     {
         serverSocket = new ServerSocket(port);
 

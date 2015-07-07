@@ -1,4 +1,4 @@
-package com.company;
+package com.company.JMuseLib;
 
 import org.json.*;
 
@@ -8,7 +8,7 @@ import java.util.Comparator;
 /**
  * Created by TTT on 6/27/2015.
  */
-public class EEGDataPoint
+public class ConcentrationDataPoint
 {
     private long time = -1;
     private double concentrationValue = -1.d;
@@ -16,14 +16,14 @@ public class EEGDataPoint
     public static Calendar calendar = Calendar.getInstance();
 
 
-    public EEGDataPoint(String json) throws JSONException {
+    public ConcentrationDataPoint(String json) throws JSONException {
         myObject = new JSONObject(json);
 
         time = myObject.getLong("time");
         concentrationValue = myObject.getDouble("value");
     }
 
-    public EEGDataPoint() {
+    public ConcentrationDataPoint() {
         //for debugging only
     }
 
@@ -53,22 +53,22 @@ public class EEGDataPoint
         this.time = time;
     }
 
-    public static Comparator<EEGDataPoint> compareDate = new Comparator<EEGDataPoint>() {
+    public static Comparator<ConcentrationDataPoint> compareDate = new Comparator<ConcentrationDataPoint>() {
         @Override
-        public int compare(EEGDataPoint p1, EEGDataPoint p2) {
+        public int compare(ConcentrationDataPoint p1, ConcentrationDataPoint p2) {
             return p1.time < p2.time ? -1 : 1;
         }
     };
 
-    public static Comparator<EEGDataPoint> compareConcentration = new Comparator<EEGDataPoint>() {
+    public static Comparator<ConcentrationDataPoint> compareConcentration = new Comparator<ConcentrationDataPoint>() {
         @Override
-        public int compare(EEGDataPoint p1, EEGDataPoint p2) {
+        public int compare(ConcentrationDataPoint p1, ConcentrationDataPoint p2) {
             return p1.getConcentrationValue() < p2.getConcentrationValue() ? -1 : 1;
         }
     };
 
-    public static Comparator<EEGDataPoint> compareTimeOfDay = new Comparator<EEGDataPoint>() {
-        public int compare(EEGDataPoint p1, EEGDataPoint p2) {
+    public static Comparator<ConcentrationDataPoint> compareTimeOfDay = new Comparator<ConcentrationDataPoint>() {
+        public int compare(ConcentrationDataPoint p1, ConcentrationDataPoint p2) {
             calendar.setTimeInMillis(p1.time);
             int seconds1 = calendar.get(Calendar.HOUR_OF_DAY)*3600+calendar.get(Calendar.MINUTE)*60+calendar.get(Calendar.SECOND);
             calendar.setTimeInMillis(p2.time);

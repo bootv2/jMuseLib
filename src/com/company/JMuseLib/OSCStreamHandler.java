@@ -1,4 +1,4 @@
-package com.company;
+package com.company.JMuseLib;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by TTT on 6/27/2015.
  */
-public class JsonStream implements Runnable
+public class OSCStreamHandler implements Runnable
 {
     private Queue<String> lineQueue;
 
@@ -33,23 +33,23 @@ public class JsonStream implements Runnable
     }
 
     private OutputStream outStream;
-    private Telnet telnet;
+    private OSCServer oscServer;
     private boolean isFirstLine = true;
-    public JsonStream()
+    public OSCStreamHandler()
     {
         //lineQueue = new LinkedList<String>();
         try {
-            telnet = new Telnet(CONN_PORT);
+            oscServer = new OSCServer(CONN_PORT);
 
-            System.out.println("Telnet server created...");
+            System.out.println("oscServer server created...");
 
-            //before now, the telnet thread was started here.
+            //before now, the oscServer thread was started here.
 
             //telnetThread.
 
-            //System.out.println("Telnet server running!");
+            //System.out.println("oscServer server running!");
 
-            //dataStream = telnet.getInputStream();
+            //dataStream = oscServer.getInputStream();
 
             //System.out.println("DataStream set.");
         } catch (IOException e) {
@@ -67,9 +67,9 @@ public class JsonStream implements Runnable
         dataStream = i;
     }
 
-    public Telnet getTelnet()
+    public OSCServer getOscServer()
     {
-        return telnet;
+        return oscServer;
     }
 
     public Queue<String> getLineQueue()
@@ -97,7 +97,7 @@ public class JsonStream implements Runnable
                     }
                     if (!isFirstLine) {
                         lineQueue.add(curLine);
-                        System.out.println("a new line should be added to the line queue.");
+                        //System.out.println("a new line should be added to the line queue.");
                         curLine = "";
                         lineChars = 0;
                     } else {
@@ -114,7 +114,7 @@ public class JsonStream implements Runnable
         {
             try {
                 System.out.println("Setting data stream");
-                dataStream = telnet.getInputStream();
+                dataStream = oscServer.getInputStream();
             } catch (IOException e) {
                 e.printStackTrace();
             }

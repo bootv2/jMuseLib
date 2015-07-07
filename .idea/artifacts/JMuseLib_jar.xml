@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="JMuseLib:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JMuseLib_jar</output-path>
+    <root id="archive" name="JMuseLib.jar">
+      <element id="module-output" name="JMuseLib" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/com.springsource.org.json/1.0.0/com.springsource.org.json-1.0.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
